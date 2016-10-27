@@ -87,9 +87,8 @@ var totalUrl = urlBase + urlMiddle + urlEnd;
 console.log(totalUrl)
 
 
-$(window).resize(function(){
-   drawChart();
- })
+
+
 
 $.ajax({
   url: totalUrl,
@@ -126,6 +125,8 @@ var options = {
                 stroke: '#112512'},
     }
 
-
+$(window).resize(function(){
+   drawChart();
+ })
 
 

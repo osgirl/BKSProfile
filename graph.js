@@ -32,8 +32,10 @@ function getDates(){
   endDate = document.getElementById("endDate").value;
   var sA = startDate.split("-")
   var eA = endDate.split("-")
-  if ((isNaN(parseFloat(sA[0])))||(isNaN(parseFloat(eA[0])))||(isNaN(parseFloat(sA[1])))||(isNaN(parseFloat(eA[1])))||(isNaN(parseFloat(eA[2])))||(isNaN(parseFloat(sA[1])))||
-    (parseFloat(eA[1])>12)|| (parseFloat(sA[1])>12) || (parseFloat(eA[1])>12) || (parseFloat(eA[2])>31) || (parseFloat(sA[2])>31)||(((parseFloat(eA[0]))-(parseFloat(sA[0])))>1)||(((parseFloat(eA[0]))-(parseFloat(sA[0])))<0) ){
+  if ((isNaN(parseFloat(sA[0])))||(isNaN(parseFloat(eA[0])))||(isNaN(parseFloat(sA[1])))||(isNaN(parseFloat(eA[1])))
+    ||(isNaN(parseFloat(eA[2])))||(isNaN(parseFloat(sA[1])))||(parseFloat(eA[1])>12)|| (parseFloat(sA[1])>12) || 
+    (parseFloat(eA[1])>12) || (parseFloat(eA[2])>31) || (parseFloat(sA[2])>31)||(((parseFloat(eA[0]))-(parseFloat(sA[0])))>1)||
+    (((parseFloat(eA[0]))-(parseFloat(sA[0])))<0) ){
        $('#myModal').modal('show');
   }
   console.log(startDate);
@@ -59,10 +61,7 @@ function buttonPressed(buttonTitle){
     startDate = year + "-" + addzeros(month-1) + "-" + addzeros(day)
     endDate = year + "-" + addzeros(month) + "-" + addzeros(day)
   }
-  else if (buttonTitle==="2 Years"){
-    startDate = year + "-" + addzeros(month-1) + "-" + addzeros(day)
-    endDate = year + "-" + addzeros(month) + "-" + addzeros(day)
-  }
+  
   // alert(startDate + " " + endDate)
   drawChart();
 
@@ -87,6 +86,11 @@ var urlEnd = "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Fa
 var totalUrl = urlBase + urlMiddle + urlEnd;
 console.log(totalUrl)
 
+
+$(window).resize(function(){
+   drawChart();
+   console.log("resizing");
+ })
 
 $.ajax({
   url: totalUrl,
@@ -122,5 +126,7 @@ var options = {
                 // Color of the box outline.
                 stroke: '#112512'},
     }
+
+
 
 

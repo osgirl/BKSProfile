@@ -89,7 +89,6 @@ console.log(totalUrl)
 
 $(window).resize(function(){
    drawChart();
-   console.log("resizing");
  })
 
 $.ajax({
